@@ -26,22 +26,27 @@ export default function Login() {
       };
       // verificar que no hay error
       if (Object.keys(formErrors).length == 0 && isSubmit) {
-         console.log("LOGIN...");
          login(credentials);
       }
-      console.log("useEffect", formErrors);
    }, [formErrors]);
 
    const login = async (credentials) => {
       try {
          const res = await AuthService.login(credentials);
-         console.log(res.data);
-         TokenStorageService.saveToken(res.data.token);
+         TokenStorageService.saveToken(res.data.token)
          navigate("/admin");
+         // if (res.data.message === 'User Logged as super_admin') {
+         //    navigate('/admin')
+         //  } else {
+         //    navigate('/user')
+         // }
       } catch (error) {
          console.log(error);
       }
    };
+
+
+   
 
    // handlers
    const handleChange = (e) => {
@@ -55,9 +60,9 @@ export default function Login() {
 
    const handleSubmit = (e) => {
       e.preventDefault();
-      console.log("submit");
+
       setFormErrors(validateLoginFormValues(formValues));
-      console.log("handle", formErrors);
+
       setIsSubmit(true);
    };
 

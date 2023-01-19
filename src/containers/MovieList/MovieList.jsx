@@ -20,7 +20,7 @@ export default function MovieList() {
       try {
          const res = await MovieService.getAllMovies();
          //setPages(res.data.info.pages);
-         setMovies(res.data.results);
+         setMovies(res.data.results);//////results
       } catch (error) {
          console.log(error.message || error);
       }

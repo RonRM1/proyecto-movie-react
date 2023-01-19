@@ -10,6 +10,8 @@ import MovieDetail from "./containers/MovieDetail/MovieDetail";
 import About from "./containers/About/About";
 import Login from "./containers/Login/Login";
 import Admin from "./containers/Admin/Admin";
+import RequireAuth from "./components/Auth/RequireAuth";
+import User from "./containers/User/User";
 
 function App() {
    return (
@@ -18,11 +20,12 @@ function App() {
             <Header />
             <Routes>
                <Route path="/" element={<Navigate to="/movies" />} />
-               <Route path="/movies" element={<MovieList />} />
+               <Route path="/movies" element={<RequireAuth><MovieList /></RequireAuth>} />
                <Route path="/movies/:id" element={<MovieDetail />} />
                <Route path="/about" element={<About />} />
                <Route path="/login" element={<Login />} />
                <Route path="/admin" element={<Admin />} />
+               <Route path="/user"  element={<User />} />
             </Routes>
          </BrowserRouter>
       </div>

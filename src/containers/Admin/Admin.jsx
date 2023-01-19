@@ -16,7 +16,7 @@ export default function Admin() {
    const getAllUsers = async () => {
       try {
          const res = await UserService.getAllUsers(token);
-         setUsers(res.data.results);
+         setUsers(res.data.data);
       } catch (error) {
          console.log(error.message || error);
       }
